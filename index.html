@@ -1,370 +1,285 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Princess Birthday | By Ali Nawaz</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Princess Ayesha Khan</title>
 
 <style>
-*{box-sizing:border-box}
-
-body{
- margin:0;
- height:100vh;
- overflow:hidden;
- background:#080014;
- color:white;
- font-family:Arial,sans-serif;
- text-align:center;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body:before{
- content:"";
- position:fixed;
- inset:-50%;
- background:conic-gradient(red,orange,yellow,lime,cyan,blue,magenta,red);
- filter:blur(100px);
- opacity:.4;
- animation:rainbow 5s linear infinite;
- z-index:-2;
+body {
+    min-height: 100vh;
+    background: #090018;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    overflow-x: hidden;
 }
 
-@keyframes rainbow{
- to{transform:rotate(360deg)}
+.bg {
+    position: fixed;
+    inset: -50%;
+    z-index: -2;
+    background: conic-gradient(
+        red, orange, yellow, lime,
+        cyan, blue, violet, magenta, red
+    );
+    filter: blur(100px);
+    opacity: 0.28;
+    animation: spin 12s linear infinite;
 }
 
-body:after{
- content:"";
- position:fixed;
- inset:0;
- pointer-events:none;
- background:linear-gradient(90deg,
- rgba(255,0,100,.2),transparent,
- rgba(0,200,255,.2));
- animation:party 2s infinite alternate;
- z-index:5;
+@keyframes spin {
+    to { transform: rotate(360deg); }
 }
 
-@keyframes party{
- from{opacity:.2;filter:hue-rotate(0deg)}
- to{opacity:1;filter:hue-rotate(360deg)}
+.lights {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
 }
 
-/* RGB LIGHTS */
-
-.light{
- position:absolute;
- width:8px;
- height:8px;
- border-radius:50%;
- animation:blink .7s infinite alternate;
+.light {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 18px 5px #ff00ff;
+    animation: blink 1s infinite alternate;
 }
 
-@keyframes blink{
- from{opacity:.2;box-shadow:0 0 5px currentColor}
- to{opacity:1;box-shadow:0 0 25px 8px currentColor}
+.light:nth-child(1) { top: 10%; left: 10%; }
+.light:nth-child(2) { top: 20%; right: 10%; }
+.light:nth-child(3) { bottom: 15%; left: 15%; }
+.light:nth-child(4) { bottom: 20%; right: 15%; }
+.light:nth-child(5) { top: 50%; left: 5%; }
+.light:nth-child(6) { top: 60%; right: 5%; }
+
+@keyframes blink {
+    to {
+        opacity: 0.35;
+        transform: scale(0.7);
+    }
 }
 
-.laser{
- position:absolute;
- width:3px;
- height:100vh;
- opacity:.5;
- filter:blur(3px);
- animation:laser 2s infinite alternate;
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 16px;
 }
 
-@keyframes laser{
- from{transform:rotate(-20deg)}
- to{transform:rotate(20deg)}
+.gift {
+    font-size: 105px;
+    animation: bounce 1.4s infinite;
+    filter: drop-shadow(0 0 22px #ff00ff);
 }
 
-/* INTRO */
-
-#intro{
- padding:80px 10px;
- position:relative;
- z-index:2;
+@keyframes bounce {
+    50% { transform: translateY(-18px); }
 }
 
-h1{
- text-shadow:0 0 15px magenta,0 0 30px cyan;
+h1 {
+    font-size: clamp(30px, 8vw, 56px);
+    margin: 10px 0;
+    text-shadow: 0 0 12px #ff00ff,
+                 0 0 28px #00eaff;
 }
 
-.gift{
- font-size:120px;
- margin:35px;
- animation:giftGlow 1s infinite alternate;
+h2 {
+    color: #ffb6e6;
+    margin: 14px 0;
 }
 
-@keyframes giftGlow{
- from{filter:drop-shadow(0 0 10px red)}
- to{filter:drop-shadow(0 0 40px cyan)}
+p {
+    line-height: 1.6;
+    margin: 12px 0;
 }
 
-button{
- padding:16px 30px;
- border:none;
- border-radius:30px;
- color:white;
- font-size:18px;
- font-weight:bold;
- background:linear-gradient(90deg,red,orange,magenta,blue,cyan);
- background-size:300%;
- animation:buttonLight 3s infinite linear;
+button {
+    margin-top: 20px;
+    padding: 15px 28px;
+    border: 2px solid white;
+    border-radius: 40px;
+    background: linear-gradient(
+        90deg, #ff0080, #7928ca, #00c6ff
+    );
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+    box-shadow: 0 0 20px #ff00ff;
+    cursor: pointer;
 }
 
-@keyframes buttonLight{
- to{background-position:300%}
+#surprise {
+    display: none;
+    width: 100%;
+    max-width: 650px;
+    animation: appear 1s ease;
 }
 
-/* BIRTHDAY SHOW */
-
-#show{
- display:none;
- padding:65px 10px 10px;
- position:relative;
- z-index:2;
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
-.word{
- font-size:34px;
- font-weight:bold;
- letter-spacing:4px;
- margin:18px 0;
+.message {
+    margin-top: 22px;
+    padding: 24px 14px;
+    border: 2px solid #ff69dc;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.08);
+    box-shadow: 0 0 24px #ff00ff;
+    line-height: 2;
+    font-size: 17px;
 }
 
-.letter{
- display:inline-block;
- opacity:0;
- transform:translateY(50px) scale(.3);
- animation:appear .6s forwards;
+.credit {
+    margin-top: 24px;
+    color: #ffd700;
+    font-size: 18px;
+    font-weight: bold;
 }
 
-@keyframes appear{
- to{opacity:1;transform:translateY(0) scale(1)}
+.floating {
+    position: fixed;
+    bottom: -40px;
+    font-size: 25px;
+    pointer-events: none;
+    animation: floatUp 6s linear forwards;
+    z-index: 5;
 }
 
-.neon{
- animation:neon 1s infinite alternate;
+@keyframes floatUp {
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
 }
-
-@keyframes neon{
- from{text-shadow:0 0 10px red,0 0 20px magenta}
- to{text-shadow:0 0 20px cyan,0 0 40px blue,0 0 60px pink}
-}
-
-#cake{
- font-size:60px;
- margin:15px;
- animation:giftGlow 1s infinite alternate;
-}
-
-#final{
- font-size:17px;
- line-height:1.7;
- color:#fff;
- text-shadow:0 0 12px magenta,0 0 25px cyan;
- margin-top:20px;
-}
-
-.credit{
- margin-top:20px;
- font-size:19px;
- font-weight:bold;
- color:gold;
- text-shadow:0 0 10px gold,0 0 25px orange;
-}
-
-/* FLOATING EFFECTS */
-
-.star{
- position:absolute;
- top:-30px;
- font-size:22px;
- animation:fall linear forwards;
- z-index:3;
-}
-
-@keyframes fall{
- to{
- transform:translateY(110vh) rotate(360deg);
- opacity:0;
- }
-}
-
 </style>
 </head>
 
 <body>
 
-<div id="intro">
+<div class="bg"></div>
 
-<h1>👑 A SPECIAL SURPRISE 👑</h1>
-
-<div class="gift">🎁</div>
-
-<h2>For Princess ❤️</h2>
-
-<button onclick="start()">
-OPEN YOUR GIFT 🎁
-</button>
-
+<div class="lights">
+    <div class="light"></div>
+    <div class="light"></div>
+    <div class="light"></div>
+    <div class="light"></div>
+    <div class="light"></div>
+    <div class="light"></div>
 </div>
 
-<div id="show">
+<main class="container">
 
-<div id="happy" class="word neon"></div>
+    <section id="intro">
 
-<div id="birthday" class="word neon"></div>
+        <div class="gift">🎁</div>
 
-<div id="cake">🎂</div>
+        <h2>A Special Surprise For You!</h2>
 
-<div id="princess" class="word neon"></div>
+        <p>Your birthday surprise is waiting ❤️</p>
 
-<div id="final">
+        <button type="button" onclick="openGift()">
+            OPEN YOUR GIFT 🎁
+        </button>
 
-💖 YOU ARE VERY SPECIAL 💖
+    </section>
 
-<br>
-✨ Always Keep Smiling 😊
+    <section id="surprise">
 
-<br>
-💕 Always Stay Happy
+        <h1>HAPPY BIRTHDAY</h1>
+        <h1>PRINCESS</h1>
+        <h1>AYESHA KHAN 👑</h1>
 
-<br>
-🌟 Keep Shining Like a Star
+        <h2>🎂✨ Special Birthday Celebration ✨🎂</h2>
 
-<br>
-👑 Live Your Life Like a Queen
+        <div class="message">
 
-<br>
-🌹 May All Your Dreams Come True
+            <h2>Dear Princess Ayesha Khan ❤️</h2>
 
-<br>
-🎂 Lots of Love & Best Wishes ❤️
+            🌸 You Are Very Special 🌸<br>
+            ✨ Always Keep Smiling ✨<br>
+            💖 Always Stay Happy 💖<br>
+            ⭐ Keep Shining Like A Star ⭐<br>
+            👑 Live Your Life Like A Queen 👑<br>
+            🌈 May All Your Dreams Come True 🌈<br>
+            🎁 Lots Of Love & Best Wishes 🎁<br>
+            ❤️ STAY BLESSED FOREVER ❤️
 
-<br>
-💗 STAY BLESSED FOREVER 💗
+        </div>
 
-</div>
+        <div class="credit">
+            Made With ❤️ By Ali Nawaz 👑
+        </div>
 
-<div class="credit">
-Made With ❤️ By Ali Nawaz 👑
-</div>
+    </section>
 
-</div>
+</main>
 
 <script>
+let celebrationStarted = false;
 
-/* RGB LIGHTS */
+function openGift() {
 
-for(let i=0;i<45;i++){
+    document.getElementById("intro").style.display = "none";
 
- let l=document.createElement("div");
+    document.getElementById("surprise").style.display = "block";
 
- l.className="light";
- l.style.left=Math.random()*100+"%";
- l.style.top=Math.random()*100+"%";
-
- l.style.color=[
- "red","cyan","yellow","magenta","lime","blue"
- ][i%6];
-
- l.style.animationDelay=Math.random()+"s";
-
- document.body.appendChild(l);
+    if (!celebrationStarted) {
+        celebrationStarted = true;
+        startCelebration();
+    }
 }
 
-/* LASER LIGHTS */
+function startCelebration() {
 
-for(let i=0;i<6;i++){
+    const emojis = [
+        "❤️", "💖", "💕", "✨",
+        "🌸", "🎉", "🎂", "⭐", "👑"
+    ];
 
- let laser=document.createElement("div");
+    setInterval(function() {
 
- laser.className="laser";
- laser.style.left=(i*18)+"%";
+        const item = document.createElement("div");
 
- laser.style.background=[
- "red","cyan","magenta","blue","yellow","lime"
- ][i];
+        item.className = "floating";
 
- document.body.appendChild(laser);
+        item.textContent = emojis[
+            Math.floor(Math.random() * emojis.length)
+        ];
+
+        item.style.left = Math.random() * 100 + "vw";
+
+        item.style.animationDuration =
+            (4 + Math.random() * 3) + "s";
+
+        document.body.appendChild(item);
+
+        setTimeout(function() {
+            item.remove();
+        }, 7000);
+
+    }, 400);
 }
-
-/* LETTER ANIMATION */
-
-function animateText(id,text,delay){
-
- let box=document.getElementById(id);
- box.innerHTML="";
-
- [...text].forEach((letter,i)=>{
-
-  let span=document.createElement("span");
-
-  span.className="letter";
-  span.textContent=letter;
-
-  span.style.animationDelay=(i*delay)+"s";
-
-  box.appendChild(span);
-
- });
-}
-
-/* CELEBRATION */
-
-function celebration(){
-
- for(let i=0;i<35;i++){
-
-  let star=document.createElement("div");
-
-  star.className="star";
-
-  star.innerHTML=[
-  "💖","✨","🎉","⭐","🌟","🌹","💕"
-  ][Math.floor(Math.random()*7)];
-
-  star.style.left=Math.random()*100+"%";
-
-  star.style.animationDuration=
-  (2+Math.random()*4)+"s";
-
-  star.style.animationDelay=
-  Math.random()*2+"s";
-
-  document.body.appendChild(star);
-
-  setTimeout(()=>star.remove(),7000);
- }
-}
-
-/* START */
-
-function start(){
-
- document.getElementById("intro").style.display="none";
-
- document.getElementById("show").style.display="block";
-
- celebration();
-
- animateText("happy","HAPPY",0.35);
-
- setTimeout(()=>{
-  animateText("birthday","BIRTHDAY",0.25);
- },2500);
-
- setTimeout(()=>{
-  animateText("princess","PRINCESS",0.35);
- },5500);
-
- setInterval(celebration,5000);
-
-}
-
 </script>
 
 </body>
-</html>
+ </html>
